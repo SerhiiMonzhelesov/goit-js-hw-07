@@ -18,3 +18,24 @@ const listGallery = document.querySelector('.gallery')
 listGallery.insertAdjacentHTML('afterbegin', markupGallery)
 
 listGallery.addEventListener('click', handlerPreview)
+
+function handlerPreview(event) {
+  if (event.target === event.currentTarget) return;
+  event.preventDefault();
+
+  const urlOriginal = event.target.closest('a').getAttribute('href')
+
+  const modalWindow = basicLightbox.create(`
+    <img src="${urlOriginal}" width="800" height="600">
+    `)
+  
+  modalWindow.show()
+
+  document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') {
+    modalWindow.close()
+  }
+})
+}
+
+
