@@ -1,6 +1,8 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
+const listGallery = document.querySelector('.gallery')
+
 const markupGallery = galleryItems.map(({ preview, original, description }) => {
     return `<li class="gallery__item">
   <a class="gallery__link" href="${original}">
@@ -14,7 +16,7 @@ const markupGallery = galleryItems.map(({ preview, original, description }) => {
 </li>`
 }).join('')
 
-const listGallery = document.querySelector('.gallery')
+
 listGallery.insertAdjacentHTML('afterbegin', markupGallery)
 
 listGallery.addEventListener('click', handlerPreview)
@@ -32,10 +34,10 @@ function handlerPreview(event) {
   modalWindow.show()
 
   document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') {
-    modalWindow.close()
-  }
-})
+    if (event.key === 'Escape') {
+      modalWindow.close()
+    }
+  })
 }
 
 
